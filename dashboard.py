@@ -2,6 +2,7 @@ import numpy as np
 
 from Chart_extended import ChartExtended
 from chart_description import ChartDescription
+from chart_widget_how_to import ChartWidget
 from dashboard_abstract.dashboard_chart import DashboardChart
 from dashboard_abstract.dashboard_main import DashboardMain
 from dashboard_abstract.dashboard_screen import DashboardScreen
@@ -10,6 +11,7 @@ import altair as alt
 from functools import partial
 import streamlit as st
 
+from dashboard_abstract.dashboard_widgets import DashboardWidgets
 from screen_widget import ScreenWidget
 
 main = DashboardMain(
@@ -27,6 +29,7 @@ screen1 = DashboardScreen(
              "Ogni Screen ha dei grafici. Vengono mostrati tutti una volta che lo screen è stato selezionato."
 )
 
+
 chart1 = DashboardChart(
     title="Questo è invece un grafico",
     name="Primo",
@@ -34,6 +37,7 @@ chart1 = DashboardChart(
              "creare una classe concreta che implementi questa classe astratta. In alternativa, è possibile usare il metodo add_chart passando un grafico "
              "wrappato dentro una functools.partial"
 )
+
 
 #esempio di grafico dalla documentazione di altair
 x = np.arange(100)
@@ -79,11 +83,15 @@ screen2 = ScreenWidget(
         ChartDescription(
             "Partial",
             "",
-            "Questa struttura si basa sulla programmazione funzionale. Quando sto scrivendo questa riga di codice, non voglio che mi venga mostrato"
-            " in questo punto il grafico ma voglio che venga fatto in uno specifico momento. Pertanto tornano comodi i puntatori a funzioni. Purtroppo, "
+            "Questa struttura si basa sulla programmazione funzionale. Quando creo un oggetto delle classi DashboardXYZ, non voglio che mi venga mostrato"
+            "al momento dell'istanziazione i widget ma voglio che venga fatto in uno specifico momento. Pertanto tornano comodi i puntatori a funzioni. Purtroppo, "
             "tutte le funzioni di streamlit richiedono almeno un argomento quindi non possiamo usare semplicemente il puntatore. Per poter creare la funzione, e quindi "
             "il widget dobbiamo usare il metodo partial di functools. ",
             more=True
+        ),
+        ChartWidget(
+            "Come aggiungere i widget",
+            ""
         )
         ],
     widget_list=[
@@ -96,4 +104,6 @@ main.add_screen(screen1)
 main.add_screen(screen2)
 
 
+
 main.show()
+

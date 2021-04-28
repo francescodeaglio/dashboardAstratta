@@ -21,16 +21,17 @@ class ChartDescription(DashboardChart):
             text = "Ad esempio, se si vuole chiamare"
             st.markdown("*"+text+"*")
             st.code('''
-            st.selectbox("Dove vivi?", ["Torino", "Roma"])''')
+st.selectbox("Dove vivi?", ["Torino", "Roma"])''')
             text = "Bisognerà creare un oggetto del tipo"
             st.markdown("*" + text + "*")
             st.code('''
-            from functools import partial
-            a=partial(st.selectbox, "Dove vivi?", ["Torino", "Roma"])
-            #         ^- nome funzione    ^---------^---- argomenti della funzione''')
+from functools import partial
+a=partial(st.selectbox, "Dove vivi?", ["Torino", "Roma"])
+#         ^- nome funzione    ^---------^---- argomenti della funzione''')
             text = "E in un secondo momento sarà possibile fare un'operazione del genere"
             st.markdown("*" + text + "*")
             st.code('''
-            citta_scelta = a()''')
+citta_scelta = a()''')
             text = "Così facendo verrà creata una selectbox che chiede 'dove vivi?' e il valore di ritorno immagazzinato in citta_scelta"
             st.markdown("*" + text + "*")
+            st.info("Per aspetti più dettagliati: https://docs.python.org/3/library/functools.html")

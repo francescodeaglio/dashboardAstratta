@@ -4,6 +4,9 @@ import os
 import streamlit as st
 
 def st_functional_columns_old(lista, sizes=None):
+       """
+        Versione vecchia, lasciata solo per non pentirmi di averla cancellata
+       """
        if sizes is None:
               cols = st.beta_columns(len(lista))
        elif len(sizes) != len(lista):
@@ -39,6 +42,12 @@ def st_functional_columns_old(lista, sizes=None):
 
 
 def st_functional_columns(lista, sizes=None):
+    """
+    Da la possibilità di creare colonne quando si vuole, usando la programmazione funzionale.
+
+    :param lista: lista di partial contenenti funzioni streamlit (st.selectbox, st.write ecc)
+    :param sizes: dimensioni delle colonne. Opzionale, se non presente vengono create tutte della stessa dimensione. Solleva un'eccezione se la lista di funzioni e le dimensioni non hanno lo stesso numeri di elementi
+    """
     if sizes is None:
         cols = st.beta_columns(len(lista))
     elif len(sizes) != len(lista):
@@ -57,4 +66,4 @@ def st_functional_columns(lista, sizes=None):
             ret.append(None)
         i+=1
 
-    return ret
+    return tuple(ret)
