@@ -66,12 +66,14 @@ class DashboardMain(DashboardField):
         :param screen_name: nome dello screen da mostrare
         :return:
         """
-
+        trovato = False
         for screen in self.available_screens_list:
             if screen.get_name() == screen_name:
                 screen.show()
+                trovato = True
                 break
-        raise Exception("Non esiste questo schermo.")
+        if not trovato:
+            raise Exception("Non esiste questo schermo.")
 
     def show(self):
         """
