@@ -1,0 +1,564 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>dashboard_abstract package &mdash; Dashboard Astratta  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> Dashboard Astratta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">dashboard_abstract package</a><ul>
+<li><a class="reference internal" href="#module-dashboard_abstract.dashboard_field">DashboardField</a></li>
+<li><a class="reference internal" href="#module-dashboard_abstract.dashboard_chart">DahboardChart</a></li>
+<li><a class="reference internal" href="#module-dashboard_abstract.dashboard_screen">DashboardScreen</a></li>
+<li><a class="reference internal" href="#module-dashboard_abstract.dashboard_main">DashboardMain</a></li>
+<li><a class="reference internal" href="#module-dashboard_abstract.dashboard_widgets">DashboardWidgets</a></li>
+<li><a class="reference internal" href="#module-dashboard_abstract.utils">Utils</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Dashboard Astratta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>dashboard_abstract package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dashboard-abstract-package">
+<h1>dashboard_abstract package<a class="headerlink" href="#dashboard-abstract-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-dashboard_abstract.dashboard_field">
+<span id="dashboardfield"></span><h2>DashboardField<a class="headerlink" href="#module-dashboard_abstract.dashboard_field" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="dashboard_abstract.dashboard_field.DashboardField">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">dashboard_abstract.dashboard_field.</span></code><code class="sig-name descname"><span class="pre">DashboardField</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widget_location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widget_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widget_object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_field.DashboardField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe astratta da cui ereditano tutte le altre. Fornisce funzionalità di base.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> – Titolo.</p></li>
+<li><p><strong>location</strong> – posizione in cui mostrare il contenuto. Di default st (quindi centro schermo).</p></li>
+<li><p><strong>widget_location</strong> – posizione in cui mostrare i widget. Di default st (quindi centro schermo).</p></li>
+<li><p><strong>name</strong> – Nome dell’oggetto, se non è fornito in automatico viene preso il titolo.</p></li>
+<li><p><strong>subtitle</strong> – Sottotitolo</p></li>
+<li><p><strong>widget_list</strong> – lista di partial per creare i widget (optional)</p></li>
+<li><p><strong>widget_object</strong> – oggetto della classe DashboardWidgets (optional)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_field.DashboardField.get_name">
+<code class="sig-name descname"><span class="pre">get_name</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_field.DashboardField.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ritorna il nome</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>il nome dell’oggetto</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_field.DashboardField.set_widgets_object">
+<code class="sig-name descname"><span class="pre">set_widgets_object</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">widgets</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_field.DashboardField.set_widgets_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permette di impostare come widget un oggetto della classe DashboardWidgets</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>widgets</strong> – Oggetto della classe DashboardWidgets</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_field.DashboardField.show_heading">
+<code class="sig-name descname"><span class="pre">show_heading</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_field.DashboardField.show_heading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mostra titolo e eventuale sottotitolo. I titoli sono i markdown con il numero di # che dipende dall’importanza.
+Metodo astratto.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_field.DashboardField.show_widgets">
+<code class="sig-name descname"><span class="pre">show_widgets</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_field.DashboardField.show_widgets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mostra i widget</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>quanto selezionato dall’utente nei vari widget, sotto forma di tupla</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-dashboard_abstract.dashboard_chart">
+<span id="dahboardchart"></span><h2>DahboardChart<a class="headerlink" href="#module-dashboard_abstract.dashboard_chart" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="dashboard_abstract.dashboard_chart.DashboardChart">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">dashboard_abstract.dashboard_chart.</span></code><code class="sig-name descname"><span class="pre">DashboardChart</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widget_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widget_object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_chart.DashboardChart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#dashboard_abstract.dashboard_field.DashboardField" title="dashboard_abstract.dashboard_field.DashboardField"><code class="xref py py-class docutils literal notranslate"><span class="pre">dashboard_abstract.dashboard_field.DashboardField</span></code></a></p>
+<p>Ultimo elemento nella scala gerarchica. Tendenzialmente mostra un grafico, ma può essere usato anche per altro (tipo report testuali).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> – titolo</p></li>
+<li><p><strong>name</strong> – nome dell’oggetto</p></li>
+<li><p><strong>subtitle</strong> – sottotitolo</p></li>
+<li><p><strong>widget_list</strong> – lista di partial per creare i widget (optional)</p></li>
+<li><p><strong>widget_object</strong> – oggetto della classe DashboardWidgets (optional)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_chart.DashboardChart.add_chart">
+<code class="sig-name descname"><span class="pre">add_chart</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chart</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_chart.DashboardChart.add_chart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aggiunge un grafico.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>chart</strong> – partial della funzione di visualizzazione. Ad esempio, se ho un grafico di altair chiamato altchart passerò partial(st.altair_chart, altchart)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_chart.DashboardChart.get_name">
+<code class="sig-name descname"><span class="pre">get_name</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_chart.DashboardChart.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ritorna il nome</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>il nome dell’oggetto</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_chart.DashboardChart.show">
+<code class="sig-name descname"><span class="pre">show</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_chart.DashboardChart.show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Da implementare, ogni classe mostra i grafici in modo diverso. Per grafici estremamente semplici, si puo passare il partial della
+funzione di visualizzazione (col metodo add_chart) e qua viene mostrato.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_chart.DashboardChart.show_heading">
+<code class="sig-name descname"><span class="pre">show_heading</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_chart.DashboardChart.show_heading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mostra titolo e sottotitolo</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-dashboard_abstract.dashboard_screen">
+<span id="dashboardscreen"></span><h2>DashboardScreen<a class="headerlink" href="#module-dashboard_abstract.dashboard_screen" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="dashboard_abstract.dashboard_screen.DashboardScreen">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">dashboard_abstract.dashboard_screen.</span></code><code class="sig-name descname"><span class="pre">DashboardScreen</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chart_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widget_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widget_object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_screen.DashboardScreen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#dashboard_abstract.dashboard_field.DashboardField" title="dashboard_abstract.dashboard_field.DashboardField"><code class="xref py py-class docutils literal notranslate"><span class="pre">dashboard_abstract.dashboard_field.DashboardField</span></code></a></p>
+<p>Classe intermedia. Ogni Main possiede più Screen, ogni Screen ha più Chart. Di default mostra il titolo, sottotitolo e tutti i grafici</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> – titolo</p></li>
+<li><p><strong>name</strong> – nome</p></li>
+<li><p><strong>chart_list</strong> – lista di grafici (DashboardChart)</p></li>
+<li><p><strong>subtitle</strong> – sottotitolo</p></li>
+<li><p><strong>widget_list</strong> – lista di partial per creare i widget (optional)
+:param widget_object: oggetto della classe DashboardWidgets (optional)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_screen.DashboardScreen.add_chart">
+<code class="sig-name descname"><span class="pre">add_chart</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chart</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_screen.DashboardScreen.add_chart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Da la possibilità di aggiungere un grafico alla lista</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>chart</strong> – oggetto di tipo DashboardChart</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_screen.DashboardScreen.show">
+<code class="sig-name descname"><span class="pre">show</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_screen.DashboardScreen.show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mostra intestazione e grafici</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_screen.DashboardScreen.show_charts">
+<code class="sig-name descname"><span class="pre">show_charts</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_screen.DashboardScreen.show_charts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mostra tutti gli oggetti di tipo DashboardChart appartenenti a questo screen.
+Si è scelto di mostrarli tutti, altrimenti si può usare show_single_chart passandone il nome
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_screen.DashboardScreen.show_heading">
+<code class="sig-name descname"><span class="pre">show_heading</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_screen.DashboardScreen.show_heading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mostra l’intestazione</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_screen.DashboardScreen.show_single_chart">
+<code class="sig-name descname"><span class="pre">show_single_chart</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_screen.DashboardScreen.show_single_chart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mostra solo uno specifico grafico. La chiave per scegliere il titolo è il nome.
+Il grafico deve essere nella chart_list, altrimenti viene sollevata un’eccezione.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – Nome del DashboardChart da mostrare.:</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-dashboard_abstract.dashboard_main">
+<span id="dashboardmain"></span><h2>DashboardMain<a class="headerlink" href="#module-dashboard_abstract.dashboard_main" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="dashboard_abstract.dashboard_main.DashboardMain">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">dashboard_abstract.dashboard_main.</span></code><code class="sig-name descname"><span class="pre">DashboardMain</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">available_screen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widget_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widget_location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widget_object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_main.DashboardMain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#dashboard_abstract.dashboard_field.DashboardField" title="dashboard_abstract.dashboard_field.DashboardField"><code class="xref py py-class docutils literal notranslate"><span class="pre">dashboard_abstract.dashboard_field.DashboardField</span></code></a></p>
+<p>Classe principale della Dashboard. Il suo titolo e sottotitolo vengono mostrati in ogni pagina. Di default da la possibilità di scegliere
+quale Screen mostrare, attraverso un selectbox nella sidebar</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> – Titolo</p></li>
+<li><p><strong>available_screen</strong> – lista di DashboardScreen</p></li>
+<li><p><strong>subtitle</strong> – sottotitolo</p></li>
+<li><p><strong>logo</strong> – immagine con il logo (o path o link internet)</p></li>
+<li><p><strong>name</strong> – nome, se non passato viene usato il titolo</p></li>
+<li><p><strong>widget_location</strong> – posizione in cui mostrare i widget. Di default nella sidebar.</p></li>
+<li><p><strong>widget_list</strong> – lista di partial per creare i widget (optional)</p></li>
+<li><p><strong>widget_object</strong> – oggetto della classe DashboardWidgets (optional)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_main.DashboardMain.add_screen">
+<code class="sig-name descname"><span class="pre">add_screen</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_main.DashboardMain.add_screen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Da la possibilità di aggiungere uno Screen alla lista</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>screen</strong> – oggetto della classe DashboardScreen</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_main.DashboardMain.get_screen_names">
+<code class="sig-name descname"><span class="pre">get_screen_names</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_main.DashboardMain.get_screen_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ritorna i nomi degli screen disponibili. Usato per costruire il selectbox che fa scegliere lo screen.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_main.DashboardMain.show">
+<code class="sig-name descname"><span class="pre">show</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_main.DashboardMain.show" title="Permalink to this definition">¶</a></dt>
+<dd><p>In generale, c’è un unico widget che da la possibilità di scegliere quale screen mostrare.
+Altrimenti, è possibile passare nel costruttore una widget list più estesa ma questo metodo deve essere sovrascritto
+Questo metodo mostra il titolo (e eventuale sottotitolo), raccoglie la scelta dell’utente su quale screen visualizzare e la mostra</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_main.DashboardMain.show_heading">
+<code class="sig-name descname"><span class="pre">show_heading</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_main.DashboardMain.show_heading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mostrato titolo in centro, logo nella widget_location (di default sidebar) e sottotitolo in centro</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_main.DashboardMain.show_screen">
+<code class="sig-name descname"><span class="pre">show_screen</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_main.DashboardMain.show_screen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mostra lo screen selezionato. Solleva un’eccezione se non esisite
+:param screen_name: nome dello screen da mostrare
+:return:</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-dashboard_abstract.dashboard_widgets">
+<span id="dashboardwidgets"></span><h2>DashboardWidgets<a class="headerlink" href="#module-dashboard_abstract.dashboard_widgets" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="dashboard_abstract.dashboard_widgets.DashboardWidgets">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">dashboard_abstract.dashboard_widgets.</span></code><code class="sig-name descname"><span class="pre">DashboardWidgets</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widget_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_widgets.DashboardWidgets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Permette di inserire widget nei vari campi. Una spiegazione dettagliata è data nell’esempio su streamlit</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>location</strong> – posizione in cui vengono mostrati i widget, di default al centro (altre possibili st.sidebar, st.beta_expander ecc)</p></li>
+<li><p><strong>widget_list</strong> – lista di partial, uno per ogni widget</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_widgets.DashboardWidgets.add_widget_multicolumn">
+<code class="sig-name descname"><span class="pre">add_widget_multicolumn</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">widget_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_widgets.DashboardWidgets.add_widget_multicolumn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elenco di widget, forniti in un elenco</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>widget_list</strong> – elenco di partial (chiamata del tipo nome.add_widget_multicolumn(partial(..), partial(..))</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_widgets.DashboardWidgets.add_widget_multicolumn_list">
+<code class="sig-name descname"><span class="pre">add_widget_multicolumn_list</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">widget_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_widgets.DashboardWidgets.add_widget_multicolumn_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elenco di widget, forniti in una lista</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>widget_list</strong> – lista di partial (chiamata del tipo nome.add_widget_multicolumn([partial(..), partial(..)])</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_widgets.DashboardWidgets.add_widget_multicolumn_with_sizes">
+<code class="sig-name descname"><span class="pre">add_widget_multicolumn_with_sizes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">widget_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sizes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_widgets.DashboardWidgets.add_widget_multicolumn_with_sizes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elenco di widget, forniti in una lista, e relativa dimensione.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>widget_list</strong> – lista di partial (chiamata del tipo nome.add_widget_multicolumn([partial(..), partial(..)], (0.1, 0.9))</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_widgets.DashboardWidgets.add_widget_singlecolumn">
+<code class="sig-name descname"><span class="pre">add_widget_singlecolumn</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">widget</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_widgets.DashboardWidgets.add_widget_singlecolumn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aggiunge un widget (su una nuova riga)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>widget</strong> – oggetto della classe partial</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_widgets.DashboardWidgets.set_location">
+<code class="sig-name descname"><span class="pre">set_location</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_widgets.DashboardWidgets.set_location" title="Permalink to this definition">¶</a></dt>
+<dd><p>Possibile cambaire la posizione del widget
+:param location: posizione (st, st.sidebar, st.beta_expander…)
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dashboard_abstract.dashboard_widgets.DashboardWidgets.show_widgets">
+<code class="sig-name descname"><span class="pre">show_widgets</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.dashboard_widgets.DashboardWidgets.show_widgets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mostra i widget e ritorna quanto scelto.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Quanto scelto dell’utente. Viene ritornata una tupla, dove ogni elemento è quanto ritornato su ogni riga. Se una riga presenta più colonne, vengono inseriti in un ulteriore tupla</p>
+</dd>
+</dl>
+<p>Ad esempio, se il layout è: prima riga: selectbox (a), seconda riga: due date_input (b,c), terza riga: del testo allora verrà ritornato (ret(a), (ret(b), ret(c)), None), dove ret(x) è quanto selezionato dal widget x.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-dashboard_abstract.utils">
+<span id="utils"></span><h2>Utils<a class="headerlink" href="#module-dashboard_abstract.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="dashboard_abstract.utils.st_functional_columns">
+<code class="sig-prename descclassname"><span class="pre">dashboard_abstract.utils.</span></code><code class="sig-name descname"><span class="pre">st_functional_columns</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lista</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sizes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.utils.st_functional_columns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Da la possibilità di creare colonne quando si vuole, usando la programmazione funzionale.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lista</strong> – lista di partial contenenti funzioni streamlit (st.selectbox, st.write ecc)</p></li>
+<li><p><strong>sizes</strong> – dimensioni delle colonne. Opzionale, se non presente vengono create tutte della stessa dimensione. Solleva un’eccezione se la lista di funzioni e le dimensioni non hanno lo stesso numeri di elementi</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dashboard_abstract.utils.st_functional_columns_old">
+<code class="sig-prename descclassname"><span class="pre">dashboard_abstract.utils.</span></code><code class="sig-name descname"><span class="pre">st_functional_columns_old</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lista</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sizes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboard_abstract.utils.st_functional_columns_old" title="Permalink to this definition">¶</a></dt>
+<dd><p>Versione vecchia, lasciata solo per non pentirmi di averla cancellata</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Francesco Deaglio.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
