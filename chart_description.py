@@ -7,9 +7,9 @@ import streamlit as st
 
 class ChartDescription(DashboardChart):
 
-    def __init__(self, title, name, subtitle="", widget_list = None, more=False):
+    def __init__(self, title, name, subtitle="", widget_dict = None, more=False):
         self.more = more
-        super().__init__(name=name, title=title, subtitle=subtitle, widget_list=widget_list)
+        super().__init__(name=name, title=title, subtitle=subtitle, widget_dict=widget_dict)
 
 
 

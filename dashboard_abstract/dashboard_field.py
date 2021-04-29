@@ -1,5 +1,7 @@
 import streamlit as st
 from dashboard_abstract.dashboard_widgets import DashboardWidgets
+from dashboard_abstract.logger import Logger
+
 
 class DashboardField():
     """
@@ -10,18 +12,16 @@ class DashboardField():
             :param widget_location: posizione in cui mostrare i widget. Di default st (quindi centro schermo).
             :param name: Nome dell'oggetto, se non è fornito in automatico viene preso il titolo.
             :param subtitle: Sottotitolo
-            :param widget_list: lista di partial per creare i widget (optional)
+            :param widget_dict: dizionario con chiave nome e valore un partial per creare i widget (optional)
             :param widget_object: oggetto della classe DashboardWidgets (optional)
     """
-    def __init__(self, title="", location=None, widget_location=None, name=None, subtitle="", widget_list=None, widget_object=None):
+    def __init__(self, title="", location=None, widget_location=None, name=None, subtitle="", widget_dict=None, widget_object=None):
 
         if location is None:
             location = st
         if widget_location is None:
             widget_location = st
 
-        if widget_list is None:
-            widget_list = []
         self.title = title
         self.location = location
         self.widget_location = widget_location
@@ -31,15 +31,18 @@ class DashboardField():
             self.name = name
         self.subtitle = subtitle
 
-        if widget_list is None and widget_object is None:
-            w = DashboardField(location=self.widget_location)
-        elif widget_list is None and widget_object is not None:
+        if widget_dict is None and widget_object is None:
+            w = DashboardWidgets(location=self.widget_location)
+        elif widget_dict is None and widget_object is not None:
             w = widget_object
-        elif widget_list is not None and widget_object is None:
-            w = DashboardWidgets(location=widget_location,widget_list=widget_list)
+        elif widget_dict is not None and widget_object is None:
+            w = DashboardWidgets(location=widget_location,widget_dict=widget_dict)
         else:
             st.error("Errore. Non puoi passare contemporaneamente l'oggetto Widget e la lista di widget")
+
         self.widgets = w
+
+
 
     def __enter__(self):
         """
@@ -49,7 +52,7 @@ class DashboardField():
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         #nulla
-        dummy = 0
+        pass
 
     def show_heading(self):
         """
@@ -64,6 +67,7 @@ class DashboardField():
 
         :return: quanto selezionato dall'utente nei vari widget, sotto forma di tupla
         """
+
         return self.widgets.show_widgets()
 
     def get_name(self):

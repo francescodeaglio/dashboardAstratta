@@ -74,16 +74,16 @@ screen2 = ScreenWidget(
     chart_list = [
         ChartDescription(
             "Ecco un po' di esempi",
-            "",
+            "Esempi1",
             "Sopra di me ci sono i widget dello Screen, ciò che viene scelto qua influisce su tutti i Chart. Nella sidebar c'è un multiselect,"
             " è di proprietà del Main e ti consente di navigare tra più Screen. Inoltre, ogni Chart può avere i suoi widget. Puoi vedere un esempio sotto di me",
-            widget_list = [
+            widget_dict = { "numero":
                 partial(st.slider,"Scegli un numero", 1, 12, 5)
-            ]
+                            }
         ),
         ChartDescription(
             "Partial",
-            "",
+            "Esempi2",
             "Questa struttura si basa sulla programmazione funzionale. Quando creo un oggetto delle classi DashboardXYZ, non voglio che mi venga mostrato"
             "al momento dell'istanziazione i widget ma voglio che venga fatto in uno specifico momento. Pertanto tornano comodi i puntatori a funzioni. Purtroppo, "
             "tutte le funzioni di streamlit richiedono almeno un argomento quindi non possiamo usare semplicemente il puntatore. Per poter creare la funzione, e quindi "
@@ -92,12 +92,13 @@ screen2 = ScreenWidget(
         ),
         ChartWidget(
             "Come aggiungere i widget",
-            ""
+            "Esempi2",
+            screen_name="Widget"
         )
         ],
-    widget_list=[
-        partial(st.selectbox,"Qual'è il tuo mese preferito?", ["Gennaio", "Febbraio"])
-    ]
+    widget_dict={
+        "mese preferito":partial(st.selectbox,"Qual'è il tuo mese preferito?", ["Gennaio", "Febbraio"])
+    }
 )
 
 

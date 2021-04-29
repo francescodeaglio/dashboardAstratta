@@ -17,10 +17,10 @@ class DashboardMain(DashboardField):
             :param logo: immagine con il logo (o path o link internet)
             :param name: nome, se non passato viene usato il titolo
             :param widget_location: posizione in cui mostrare i widget. Di default nella sidebar.
-            :param widget_list: lista di partial per creare i widget (optional)
+            :param widget_dict: dizionario con chiave nome e valore un partial per creare i widget (optional)
             :param widget_object: oggetto della classe DashboardWidgets (optional)
             """
-    def __init__(self, title, available_screen=None, subtitle = "", logo=None, widget_list = None, widget_location = None, name="", widget_object=None):
+    def __init__(self, title, available_screen=None, subtitle = "", logo=None, widget_dict = None, widget_location = None, name="", widget_object=None):
 
         if widget_location is None:
             widget_location = st.sidebar
@@ -31,11 +31,12 @@ class DashboardMain(DashboardField):
             available_screen = []
         self.available_screens_list = available_screen
 
-        if widget_list is None:
-            widget_list = [partial(st.sidebar.selectbox, "Scegli quale schermata visualizzare", self.get_screen_names())]
+        if widget_dict is None:
+            widget_object = DashboardWidgets(
+                widget_dict={ "Scelta screen":partial(st.sidebar.selectbox, "Scegli quale schermata visualizzare", self.get_screen_names())})
 
         super().__init__(widget_location=widget_location, title=title, name=name, subtitle=subtitle,
-                         widget_list=widget_list, widget_object=widget_object)
+                          widget_object=widget_object)
 
         self.logo = logo
 
@@ -83,7 +84,9 @@ class DashboardMain(DashboardField):
         """
 
         self.show_heading()
-        scelto = self.show_widgets()[0]
+
+        scelto = self.show_widgets()["Scelta screen"]
+
         self.show_screen(scelto)
 
     def add_screen(self, screen):
@@ -93,5 +96,6 @@ class DashboardMain(DashboardField):
         :param screen: oggetto della classe DashboardScreen
         """
         self.available_screens_list.append(screen)
-        self.widgets = DashboardWidgets(location = self.widget_location)
-        self.widgets.add_widget_singlecolumn(partial(st.sidebar.selectbox, "Scegli quale schermata visualizzare", self.get_screen_names()))
+        self.widgets = DashboardWidgets(
+                widget_dict={"Scelta screen":partial(st.sidebar.selectbox, "Scegli quale schermata visualizzare", self.get_screen_names())})
+

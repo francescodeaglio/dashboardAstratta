@@ -41,7 +41,7 @@ def st_functional_columns_old(lista, sizes=None):
        return ret
 
 
-def st_functional_columns(lista, sizes=None):
+def st_functional_columns(diz, sizes=None):
     """
     Da la possibilità di creare colonne quando si vuole, usando la programmazione funzionale.
 
@@ -49,21 +49,21 @@ def st_functional_columns(lista, sizes=None):
     :param sizes: dimensioni delle colonne. Opzionale, se non presente vengono create tutte della stessa dimensione. Solleva un'eccezione se la lista di funzioni e le dimensioni non hanno lo stesso numeri di elementi
     """
     if sizes is None:
-        cols = st.beta_columns(len(lista))
-    elif len(sizes) != len(lista):
+        cols = st.beta_columns(len(diz.keys()))
+    elif len(sizes) != len(diz.keys()):
         raise ValueError("func and size must have the same length")
     else:
         cols = st.beta_columns(sizes)
 
     i = 0
-    ret = []
+    ret = {}
 
-    for el in lista:
-        if type(el) == functools.partial:
+    for el in diz:
+        if type(diz[el]) == functools.partial:
             with cols[i]:
-                ret.append(el())
+                ret[el] = diz[el]()
         else:
-            ret.append(None)
+            ret[el] = None
         i+=1
 
-    return tuple(ret)
+    return ret

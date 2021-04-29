@@ -8,16 +8,21 @@ class DashboardScreen(DashboardField):
            :param name: nome
            :param chart_list: lista di grafici (DashboardChart)
            :param subtitle: sottotitolo
-           :param widget_list: lista di partial per creare i widget (optional)
-            :param widget_object: oggetto della classe DashboardWidgets (optional)
+           :param widget_dict: dizionario con chiave nome e valore un partial per creare i widget (optional)
+           :param widget_object: oggetto della classe DashboardWidgets (optional)
            """
 
-    def __init__(self, title, name=None, chart_list=None, subtitle="", widget_list=None, widget_object=None):
+    def __init__(self, title, name=None, chart_list=None, subtitle="", widget_dict=None, widget_object=None):
 
-        super().__init__(title=title, widget_location=st, name=name, subtitle=subtitle, widget_list=widget_list, widget_object=widget_object)
+        super().__init__(title=title, widget_location=st, name=name, subtitle=subtitle, widget_dict=widget_dict, widget_object=widget_object)
         if chart_list is None:
             chart_list = []
         self.chart_list = chart_list
+
+        for chart in chart_list:
+            chart.widgets.set_screen_name(self.name)
+
+        self.widgets.set_screen_name(self.name)
 
 
     def show(self):
@@ -74,7 +79,7 @@ class DashboardScreen(DashboardField):
         :param chart: oggetto di tipo DashboardChart
         """
         self.chart_list.append(chart)
-        print()
+        chart.widgets.set_screen_name(self.name)
 
 
 

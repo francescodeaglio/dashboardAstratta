@@ -9,14 +9,15 @@ class DashboardChart(DashboardField):
             :param title: titolo
             :param name: nome dell'oggetto
             :param subtitle: sottotitolo
-            :param widget_list: lista di partial per creare i widget (optional)
+            :param widget_dict: lista di partial per creare i widget (optional)
             :param widget_object: oggetto della classe DashboardWidgets (optional)
             """
 
-    def __init__(self, title, name=None, subtitle="", widget_list=None, widget_object=None):
+    def __init__(self, title, name=None, subtitle="", widget_dict=None, widget_object=None):
 
-        super().__init__(title, location=st, widget_location=st, name=name, subtitle=subtitle, widget_list=widget_list, widget_object=widget_object)
+        super().__init__(title, location=st, widget_location=st, name=name, subtitle=subtitle, widget_dict=widget_dict, widget_object=widget_object)
         self.chart = None
+        self.widgets.set_chart_name(self.name)
 
 
     def show_heading(self):
