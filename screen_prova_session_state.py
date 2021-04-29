@@ -69,3 +69,7 @@ class ScreenSessione(DashboardScreen):
         with open(filename, "r") as fp:
             data = json.load(fp)
             st.write(data)
+
+        if st.button("Pulisci il file di log"):
+            os.remove("log.json")
+
