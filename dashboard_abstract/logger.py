@@ -1,14 +1,19 @@
 import json
 import os
+from dashboard_abstract.utils import get_session_id
+
 class Logger():
 
     def __init__(self, name, screen_name = None, chart_name = None):
         self.name = name
 
-        dir = os.listdir(os.curdir)
+        filename = os.path.join(os.curdir, "json", str(get_session_id()))
+        dir = os.listdir(os.path.join(os.curdir, "json"))
 
-        if "globallog.json" in dir:
-            with open("globallog.json", "r") as fp:
+        print(get_session_id() in dir)
+
+        if get_session_id() in dir:
+            with open(filename, "r") as fp:
                 data = json.load(fp)
 
 
@@ -28,10 +33,11 @@ class Logger():
                         data[screen_name][chart_name] = {}
                     data[screen_name][chart_name][key] = name[key]
 
-            with open("globallog.json", "w") as fp:
+            with open(filename, "w") as fp:
                 fp.write(json.dumps(data, default=self.default)+"\n")
         else:
-            with open("globallog.json", "w") as fp:
+
+            with open(filename, "w") as fp:
                 fp.write(json.dumps(name, default=self.default)+"\n")
 
     def default(self, obj):

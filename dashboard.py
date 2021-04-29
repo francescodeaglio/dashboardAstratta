@@ -15,6 +15,15 @@ from dashboard_abstract.dashboard_widgets import DashboardWidgets
 from screen_prova_session_state import ScreenSessione
 from screen_widget import ScreenWidget
 
+
+
+
+
+
+
+
+
+
 main = DashboardMain(
     title="Questo è il titolo del Main",
     subtitle="Questo il sottotitolo del Main. Titolo e sottotitolo verranno mostrati in tutte le pagine della dashboard."

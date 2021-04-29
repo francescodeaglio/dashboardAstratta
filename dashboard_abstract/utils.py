@@ -2,6 +2,7 @@ import functools
 from functools import partial
 import os
 import streamlit as st
+from streamlit.report_thread import get_report_ctx
 
 def st_functional_columns_old(lista, sizes=None):
        """
@@ -67,3 +68,14 @@ def st_functional_columns(diz, sizes=None):
         i+=1
 
     return ret
+
+
+
+def get_session_id():
+    import streamlit.report_thread as ReportThread
+    from streamlit.server.server import Server
+    session_id = get_report_ctx().session_id
+    session_info = Server.get_current()._get_session_info(session_id)
+    if session_info is None:
+        raise RuntimeError("Couldn't get your Streamlit Session object.")
+    return session_info.session.id

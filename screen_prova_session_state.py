@@ -6,6 +6,7 @@ from dashboard_abstract.dashboard_screen import DashboardScreen
 ## importing socket module
 import socket
 import streamlit as st
+from dashboard_abstract.utils import get_session_id
 import os
 class ScreenSessione(DashboardScreen):
     def __init__(self, title, name, chart_list=None, subtitle="", widget_dict=None):
@@ -18,12 +19,15 @@ class ScreenSessione(DashboardScreen):
         dflt = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6))
 
         col1, col2 = st.beta_columns(2)
+
+        filename = os.path.join(os.curdir, "json", str(get_session_id()))
+
         with col1:
             st.write("**Il tuo codice di sessione è:**")
         with col2:
             st.code(dflt)
             if st.button("SALVA SESSIONE"):
-                with open("globallog.json", "r") as fp1:
+                with open(filename, "r") as fp1:
                     data = json.load(fp1)
                     if "log.json" in os.listdir(os.curdir):
                         with open("log.json", "r") as fp2:
@@ -62,6 +66,6 @@ class ScreenSessione(DashboardScreen):
                 for line in fp:
                     st.write(line)
 
-        with open("globallog.json", "r") as fp:
+        with open(filename, "r") as fp:
             data = json.load(fp)
             st.write(data)
