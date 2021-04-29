@@ -23,10 +23,10 @@ class ScreenSessione(DashboardScreen):
         filename = os.path.join(os.curdir, "json", str(get_session_id()))
 
         with col1:
-            st.write("**Il tuo codice di sessione è:**")
+            st.write("**Premi per salvare la sessione, ti verrà fornito un codice:**")
         with col2:
-            st.code(dflt)
             if st.button("SALVA SESSIONE"):
+                st.code(dflt)
                 with open(filename, "r") as fp1:
                     data = json.load(fp1)
                     if "log.json" in os.listdir(os.curdir):
