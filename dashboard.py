@@ -12,6 +12,7 @@ from functools import partial
 import streamlit as st
 
 from dashboard_abstract.dashboard_widgets import DashboardWidgets
+from screen_prova_session_state import ScreenSessione
 from screen_widget import ScreenWidget
 
 main = DashboardMain(
@@ -100,9 +101,11 @@ screen2 = ScreenWidget(
 )
 
 
+screen3 = ScreenSessione("Ehy", "")
+
 main.add_screen(screen1)
 main.add_screen(screen2)
-
+main.add_screen(screen3)
 
 
 main.show()
