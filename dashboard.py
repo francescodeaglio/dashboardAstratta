@@ -101,7 +101,7 @@ screen2 = ScreenWidget(
 )
 
 
-screen3 = ScreenSessione("Ehy", "")
+screen3 = ScreenSessione("", "Prova")
 
 main.add_screen(screen1)
 main.add_screen(screen2)
