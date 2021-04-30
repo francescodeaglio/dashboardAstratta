@@ -18,15 +18,15 @@ class DashboardRecoverSession():
         self.dict_indexed = {}
 
         #all'inizio è nullo, poi può essere settato
-        self.status = None
+        self.status = {}
 
     def get_default_value(self, name):
 
-        if self.status is None:
+        if get_session_id() not in self.status:
             ret = None
         else:
             ret = self.visita_ricorsiva_dict(
-                self.status,
+                self.status[get_session_id()],
                 name
             )
 
@@ -35,7 +35,7 @@ class DashboardRecoverSession():
             return date.fromisoformat(ret.split("+")[1])
 
         #gestione delle selectbox
-        if name in self.dict_indexed:
+        if name in self.dict_indexed[get_session_id()]:
             ret = self.get_indexed_value(name, ret)
         return ret
 
@@ -44,11 +44,13 @@ class DashboardRecoverSession():
 
         if value is None:
             return 0
-        return self.dict_indexed[name].index(value)
+        return self.dict_indexed[get_session_id()][name].index(value)
 
     def add_indexed(self, name, value):
-        if name not in self.dict_indexed or len(self.dict_indexed[name]) < len(value):
-            self.dict_indexed[name] = value
+        if get_session_id() not in self.dict_indexed:
+            self.dict_indexed[get_session_id()] = {}
+        if name not in self.dict_indexed[get_session_id()] or len(self.dict_indexed[get_session_id()][name]) < len(value):
+            self.dict_indexed[get_session_id()][name] = value
 
     def visita_ricorsiva_dict(self, d, name):
         for key in d:
@@ -64,6 +66,7 @@ class DashboardRecoverSession():
 
     def recover_widget(self):
         with st.sidebar:
+
                 st.write("\n**Gestione sessioni**")
                 with st.beta_expander("Salva la sessione corrente"):
                     self.salva_sessione()
@@ -109,7 +112,7 @@ class DashboardRecoverSession():
                 if scelta in data:
                     trovato = True
             if trovato:
-                self.status = data[scelta]
+                self.status[get_session_id()] = data[scelta]
                 st.experimental_rerun()
 
             else:
