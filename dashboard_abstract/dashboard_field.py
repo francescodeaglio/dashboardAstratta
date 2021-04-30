@@ -67,8 +67,8 @@ class DashboardField():
 
         :return: quanto selezionato dall'utente nei vari widget, sotto forma di tupla
         """
-
         return self.widgets.show_widgets()
+
 
     def get_name(self):
         """

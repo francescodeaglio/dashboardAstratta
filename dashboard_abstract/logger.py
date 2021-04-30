@@ -7,10 +7,12 @@ class Logger():
     def __init__(self, name, screen_name = None, chart_name = None):
         self.name = name
 
+        if len(name) == 1 and name[list(name.keys())[0]] == "Prova":
+            return
+
         filename = os.path.join(os.curdir, "json", str(get_session_id()))
         dir = os.listdir(os.path.join(os.curdir, "json"))
 
-        print(get_session_id() in dir)
 
         if get_session_id() in dir:
             with open(filename, "r") as fp:
@@ -33,6 +35,9 @@ class Logger():
                         data[screen_name][chart_name] = {}
                     data[screen_name][chart_name][key] = name[key]
 
+
+
+
             with open(filename, "w") as fp:
                 fp.write(json.dumps(data, default=self.default)+"\n")
         else:
@@ -53,5 +58,5 @@ class Logger():
             )
             return millis
         if isinstance(obj, datetime.date):
-            return str(obj)
+            return "datetime+"+str(obj)
         raise TypeError('Not sure how to serialize %s' % (obj,))

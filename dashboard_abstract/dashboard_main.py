@@ -2,7 +2,7 @@ import streamlit as st
 
 from dashboard_abstract.dashboard_field import DashboardField
 from functools import partial
-
+from dashboard_abstract.__init__ import r
 from dashboard_abstract.dashboard_widgets import DashboardWidgets
 
 
@@ -20,12 +20,13 @@ class DashboardMain(DashboardField):
             :param widget_dict: dizionario con chiave nome e valore un partial per creare i widget (optional)
             :param widget_object: oggetto della classe DashboardWidgets (optional)
             """
-    def __init__(self, title, available_screen=None, subtitle = "", logo=None, widget_dict = None, widget_location = None, name="", widget_object=None):
+    def __init__(self, title, available_screen=None, subtitle = "", logo=None, widget_dict = None, widget_location = None, name="", widget_object=None, add_recover_session=False):
 
         if widget_location is None:
             widget_location = st.sidebar
         if name != "":
             name = title
+
 
         if available_screen is None:
             available_screen = []
@@ -33,12 +34,14 @@ class DashboardMain(DashboardField):
 
         if widget_dict is None:
             widget_object = DashboardWidgets(
-                widget_dict={ "Scelta screen":partial(st.sidebar.selectbox, "Scegli quale schermata visualizzare", self.get_screen_names())})
+                widget_dict={ "Scelta screen":partial(st.sidebar.selectbox, "Scegli quale schermata visualizzare", self.get_screen_names() )})
+
 
         super().__init__(widget_location=widget_location, title=title, name=name, subtitle=subtitle,
                           widget_object=widget_object)
 
         self.logo = logo
+        self.recover = False
 
 
 
@@ -86,6 +89,8 @@ class DashboardMain(DashboardField):
         self.show_heading()
 
         scelto = self.show_widgets()["Scelta screen"]
+        if self.recover:
+            self.recover_widget()
 
         self.show_screen(scelto)
 
@@ -99,3 +104,7 @@ class DashboardMain(DashboardField):
         self.widgets = DashboardWidgets(
                 widget_dict={"Scelta screen":partial(st.sidebar.selectbox, "Scegli quale schermata visualizzare", self.get_screen_names())})
 
+
+    def add_recoverer(self, recoverer):
+        self.recover_widget = recoverer.get_widget()
+        self.recover = True

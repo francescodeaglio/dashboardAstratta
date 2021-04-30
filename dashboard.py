@@ -3,8 +3,10 @@ import numpy as np
 from Chart_extended import ChartExtended
 from chart_description import ChartDescription
 from chart_widget_how_to import ChartWidget
+from dashboard_abstract.RecoverSessionUtils import Recover
 from dashboard_abstract.dashboard_chart import DashboardChart
 from dashboard_abstract.dashboard_main import DashboardMain
+from dashboard_abstract.dashboard_recover_session import DashboardRecoverSession
 from dashboard_abstract.dashboard_screen import DashboardScreen
 import pandas as pd
 import altair as alt
@@ -14,12 +16,7 @@ import streamlit as st
 from dashboard_abstract.dashboard_widgets import DashboardWidgets
 from screen_prova_session_state import ScreenSessione
 from screen_widget import ScreenWidget
-
-
-
-
-
-
+from dashboard_abstract.__init__ import recoverer
 
 
 
@@ -31,6 +28,8 @@ main = DashboardMain(
              " Inoltre, è possibile aggiungere un logo che verrà mostrato anch'esso nella sidebar.",
     logo="http://ciaologo.com/timthumb.php?src=upload/167/266/0_20130106090123_4aab79d75c.png&h=250&w=400&zc=2&b=15"
 )
+
+main.add_recoverer(recoverer)
 
 screen1 = DashboardScreen(
     title="Questo è il titolo del primo screen",
@@ -87,7 +86,7 @@ screen2 = ScreenWidget(
             "Sopra di me ci sono i widget dello Screen, ciò che viene scelto qua influisce su tutti i Chart. Nella sidebar c'è un multiselect,"
             " è di proprietà del Main e ti consente di navigare tra più Screen. Inoltre, ogni Chart può avere i suoi widget. Puoi vedere un esempio sotto di me",
             widget_dict = { "numero":
-                partial(st.slider,"Scegli un numero", 1, 12, 5)
+                partial(st.slider,"Scegli un numero", 1, 12)
                             }
         ),
         ChartDescription(

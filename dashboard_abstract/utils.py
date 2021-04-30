@@ -78,4 +78,8 @@ def get_session_id():
     session_info = Server.get_current()._get_session_info(session_id)
     if session_info is None:
         raise RuntimeError("Couldn't get your Streamlit Session object.")
+
     return session_info.session.id
+
+
+

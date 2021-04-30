@@ -6,7 +6,7 @@ from dashboard_abstract.dashboard_chart import DashboardChart
 import pandas as pd
 import altair as alt
 import streamlit as st
-
+from dashboard_abstract.__init__ import r
 from dashboard_abstract.dashboard_widgets import DashboardWidgets
 
 
@@ -38,6 +38,7 @@ wl = [ partial(st.selectbox, "Come è il meteo oggi?", ["soleggiato", "nuvoloso"
         w = DashboardWidgets()
         w.set_screen_name(self.screen_name)
         w.set_chart_name(self.name)
+
         w.add_widget_singlecolumn("meteo", partial(st.selectbox, "Come è il meteo oggi?", ["soleggiato", "nuvoloso"]))
         w.add_widget_singlecolumn("data_nascita", partial(st.date_input, "Quando sei nato?"))
         a = w.show_widgets()
@@ -54,7 +55,8 @@ wl = [ partial(st.selectbox, "Come è il meteo oggi?", ["soleggiato", "nuvoloso"
         w1 = DashboardWidgets()
         w1.set_screen_name(self.screen_name)
         w1.set_chart_name(self.name)
-        w1.add_widget_singlecolumn("Meteo torino", partial(st.selectbox, "Come è il meteo oggi a Torino?", ["soleggiato", "nuvoloso"]))
+        w1.add_widget_singlecolumn("Meteo torino", partial(st.selectbox, "Come è il meteo oggi a Torino?", ["soleggiato", "nuvoloso"] ))
+
         w1.add_widget_multicolumn("Prima colonna", {"inizio":partial(st.date_input, "Quando inizi?"),
                                             "fine":partial(st.date_input, "Quando finisci?")}
                                                 )

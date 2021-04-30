@@ -1,6 +1,6 @@
 import streamlit as st
 from functools import partial
-
+from dashboard_abstract.__init__ import recoverer
 from dashboard_abstract.logger import Logger
 from dashboard_abstract.utils import st_functional_columns
 
@@ -19,6 +19,12 @@ class DashboardWidgets():
             self.widget_dict = {}
         else:
             self.widget_dict = widget_dict
+
+            #questo mi interessa solo se c'è un recoverer
+
+            if recoverer is not None:
+                for widget_name in widget_dict:
+                    widget_dict[widget_name] = self.stato_iniziale(widget_name, widget_dict[widget_name])
         self.location = location
         self.screen_name = None
         self.chart_name = None
@@ -30,10 +36,12 @@ class DashboardWidgets():
         :return: Quanto scelto dell'utente. Viene ritornata una tupla, dove ogni elemento è quanto ritornato su ogni riga. Se una riga presenta più colonne, vengono inseriti in un ulteriore tupla
         Ad esempio, se il layout è: prima riga: selectbox (a), seconda riga: due date_input (b,c), terza riga: del testo allora verrà ritornato (ret(a), (ret(b), ret(c)), None), dove ret(x) è quanto selezionato dal widget x.
         """
+
         ret = {}
         if self.location != st:
             with self.location:
                 for widget_name in self.widget_dict:
+
                     r = self.widget_dict[widget_name]()
                     ret[widget_name] = r
         else:
@@ -51,6 +59,10 @@ class DashboardWidgets():
 
         :param widget_dict: elenco di partial (chiamata del tipo nome.add_widget_multicolumn(partial(..), partial(..))
         """
+        if recoverer is not None:
+            for widget_name in widget_dict:
+                widget_dict[widget_name] = self.stato_iniziale(widget_name, widget_dict[widget_name])
+
         self.widget_dict[name] = partial(st_functional_columns, widget_dict, sizes)
 
 
@@ -61,7 +73,10 @@ class DashboardWidgets():
 
         :param widget: oggetto della classe partial
         """
-        self.widget_dict[name] = widget
+        if recoverer is not None:
+            self.widget_dict[name] = self.stato_iniziale(name, widget)
+        else:
+            self.widget_dict[name] = widget
 
     def set_location(self, location):
         """
@@ -77,4 +92,15 @@ class DashboardWidgets():
 
     def set_chart_name(self, name):
         self.chart_name = name
+
+    def stato_iniziale(self, name, widget):
+
+        param = widget.args
+        func = widget.func
+
+
+        if "SelectboxMixin.selectbox" in str(func):
+            recoverer.add_indexed(name, param[1])
+
+        return partial(func, *param, recoverer.get_default_value(name))
 

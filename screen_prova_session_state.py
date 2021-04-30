@@ -2,10 +2,13 @@ import json
 import random
 import string
 
+from streamlit.script_runner import RerunException
+
 from dashboard_abstract.dashboard_screen import DashboardScreen
 ## importing socket module
 import socket
 import streamlit as st
+from dashboard_abstract.__init__ import r
 from dashboard_abstract.utils import get_session_id
 import os
 class ScreenSessione(DashboardScreen):
@@ -25,10 +28,18 @@ class ScreenSessione(DashboardScreen):
         with col1:
             st.write("**Premi per salvare la sessione, ti verrà fornito un codice:**")
         with col2:
-            if st.button("SALVA SESSIONE"):
+            if st.button("SALVA SESSIONE BIS"):
                 st.code(dflt)
                 with open(filename, "r") as fp1:
                     data = json.load(fp1)
+
+                    #tolgo le info sugli screen che non mi interessano
+                    for key in list(data.keys()):
+                        st.write(key)
+                        if key != data["Scelta screen"] and key != "Scelta screen":
+                            del data[key]
+                            st.write("RIMOSSA")
+
                     if "log.json" in os.listdir(os.curdir):
                         with open("log.json", "r") as fp2:
                             total = json.load(fp2)
@@ -45,7 +56,7 @@ class ScreenSessione(DashboardScreen):
             st.write("**Inserisci il codice per recuperare la sessione:**")
         with col2:
             scelta = st.text_input("")
-            rec = st.button("RECUPERA SESSIONE")
+            rec = st.button("RECUPERA SESSIONE BIS")
         if rec:
             #controllo che esista
             trovato = False
@@ -57,6 +68,9 @@ class ScreenSessione(DashboardScreen):
             if trovato:
                 st.success("Sessione esistente")
                 st.write(data[scelta])
+                r.status = data[scelta]
+                raise st.script_runner.RerunException(st.script_request_queue.RerunData(None))
+
             else:
                 st.error("Sessione inesistente")
 
